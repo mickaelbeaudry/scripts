@@ -23,7 +23,7 @@ if [ $BUILD_TYPE == "DEBUG" ]
 fi
 
 echo "Build type : $BUILD_TYPE"
-echo "Gradle build command : ./gradlew $GRADLE_BUILD_TYPE"
+echo "Gradle build command : ./gradlew $GRADLE_BUILD_TYPE test"
 echo "App-name : $APP_NAME"
 echo "Compare commit grep : $COMPARE_COMMIT_GREP"
 
@@ -40,10 +40,10 @@ echo "Copy checkstyle report"
 cp app/build/reports/checkstyle/checkstyle.html "$REPORT_PATH/checkstyle.html"
 
 echo "Copy lint report"
-cp app/build/outputs/lint-results-debug.html "$REPORT_PATH/lint.html"
+cp app/build/reports/lint-results-release-fatal.html "$REPORT_PATH/lint.html"
 
 echo "Copy unit tests report"
-cp app/build/reports/tests/debug/index.html "$REPORT_PATH/unittests.html"
+cp app/build/reports/tests/testReleaseUnitTest/index.html "$REPORT_PATH/unittests.html"
 
 echo "Copy android instrumented tests results if exists"
 if [ -e "android-test-log.txt" ]
@@ -54,10 +54,10 @@ fi
 
 
 echo "Fetching build_report.py"
-curl https://raw.githubusercontent.com/orhanobut/scripts/master/buildreport/build_report.py -o "$REPORT_PATH/build_report.py"
+curl https://raw.githubusercontent.com/mickaelbeaudry/scripts/master/buildreport/build_report.py -o "$REPORT_PATH/build_report.py"
 
 echo "Fetching apk_info.py"
-curl https://raw.githubusercontent.com/orhanobut/scripts/master/buildreport/apk_info.py -o "$REPORT_PATH/apk_info.py"
+curl https://raw.githubusercontent.com/mickaelbeaudry/scripts/master/buildreport/apk_info.py -o "$REPORT_PATH/apk_info.py"
 
 PR_BRANCH=$(git rev-parse --short HEAD)
 echo "PR BRANCH=$PR_BRANCH"
@@ -69,7 +69,7 @@ echo "MERGE BRANCH=$MERGE_BRANCH"
 git checkout $MERGE_BRANCH
 echo "Current branch = $MERGE_BRANCH"
 echo "Building current apk"
-./gradlew $GRADLE_BUILD_TYPE > "$REPORT_PATH/current/log.txt"
+./gradlew $GRADLE_BUILD_TYPE test > "$REPORT_PATH/current/log.txt"
 echo "Copying current apk"
 cp "app/build/outputs/apk/$APP_NAME" "$REPORT_PATH/current/app.apk"
 echo "Unzipping current apk"
