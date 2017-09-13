@@ -20,7 +20,7 @@ Aggregates all data from each tool report and summarize them in html format in o
 
 Run the following command in your execute shell. That's it. If you want to compare debug builds, replace RELEASE with DEBUG. If you leave it empty, RELEASE build type will be used as default
 ```shell
-$ curl https://raw.githubusercontent.com/orhanobut/scripts/master/buildreport/build-report.sh -o build-report.sh
+$ curl https://raw.githubusercontent.com/mickaelbeaudry/scripts/master/buildreport/build-report.sh -o build-report.sh
 $ sh build-report.sh RELEASE
 ```
 
@@ -29,7 +29,7 @@ buildreport compares the new changes with the current codebase, therefore it tri
 sh build-report.sh RELEASE "your grep text"
 ```
 
-[For more details about buildreport](https://github.com/orhanobut/scripts/blob/master/buildreport/README.md)
+[For more details about buildreport](https://github.com/mickaelbeaudry/scripts/blob/master/buildreport/README.md)
 
 # git
 Set up a git with username, email and the aliases. Invoke the following command in your terminal by adding your username and email. It will setup your git with the given parameters and will add the following aliases automatically.
