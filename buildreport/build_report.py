@@ -228,9 +228,9 @@ with open(REPORT_PATH + '/build-report.html', 'w+') as file:
   add_header("Lint")
   generate_lint_report()
 
-  print "Generating checkstyle report"
-  add_header("Checkstyle")
-  generate_checkstyle_report()
+  #print "Generating checkstyle report"
+  #add_header("Checkstyle")
+  #generate_checkstyle_report()
 
   print "Generating unit tests"
   add_header("Unit Tests")
