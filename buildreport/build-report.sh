@@ -23,7 +23,7 @@ if [ $BUILD_TYPE == "DEBUG" ]
 fi
 
 echo "Build type : $BUILD_TYPE"
-echo "Gradle build command : ./gradlew $GRADLE_BUILD_TYPE test"
+echo "Gradle build command : ./gradlew $GRADLE_BUILD_TYPE test lint"
 echo "App-name : $APP_NAME"
 echo "Compare commit grep : $COMPARE_COMMIT_GREP"
 
