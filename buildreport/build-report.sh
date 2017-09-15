@@ -40,7 +40,7 @@ echo "Copy checkstyle report"
 cp app/build/reports/checkstyle/checkstyle.html "$REPORT_PATH/checkstyle.html"
 
 echo "Copy lint report"
-cp app/build/reports/lint-results-release-fatal.html "$REPORT_PATH/lint.html"
+cp app/build/reports/lint-results.html "$REPORT_PATH/lint.html"
 
 echo "Copy unit tests report"
 cp app/build/reports/tests/testReleaseUnitTest/index.html "$REPORT_PATH/unittests.html"
